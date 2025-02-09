@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  localstack:
+    image: localstack/localstack:latest
+    ports:
+      - "4566:4566"
+      - "4571:4571"
+    environment:
+      - SERVICES=lambda,s3,logs,cloudwatch,iam
+      - DEBUG=1
+    volumes:
+      - "./localstack:/docker-entrypoint-initaws.d"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
