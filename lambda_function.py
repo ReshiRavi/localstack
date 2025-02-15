@@ -13,6 +13,7 @@ db = client.user_db
 records = db['user_records']
 
 def lambda_handler(event, context):
+    print('test')
     file_name = event['Records'][0]['s3']['object']['key']
     bucket_name = event['Records'][0]['s3']['bucket']['name']
     print('file_name:', file_name)

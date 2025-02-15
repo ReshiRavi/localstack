@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+</head>
+<body>
+    <h1>Upload a File</h1>
+    <form action="/submit-form" method="post" enctype="multipart/form-data">
+        <label for="userfile">Please upload a pdf file</label>
+        <br/>
+        <input type="file" name="userfile" accept="application/pdf, application/vnd.ms-excel"/>
+        <br/>
+        <button type="submit">Upload</button>
+    </form>
+
+    <br/>
+</body>
+</html>

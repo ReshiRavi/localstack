@@ -27,14 +27,16 @@ cd ..
 
 awslocal s3api create-bucket --bucket mybucket
 
+awslocal s3 cp lambda_function.zip s3://mybucket/lambda_function.zip
+
 # Check if the Lambda function already exists
 if awslocal lambda get-function --function-name my-lambda-function > /dev/null 2>&1; then
     echo "Updating existing Lambda function..."
     # Update Lambda function code
     # awslocal lambda update-function-code --function-name my-lambda-function \
     #     --zip-file fileb://lambda_function.zip
-    awslocal lambda update-function-code --function-name my-lambda-function \
-        --code S3Bucket=mybucket,S3Key=lambda_function.zip
+    awslocal lambda update-function-code --function-name my-lambda-function --s3-bucket mybucket --s3-key lambda_function.zip
+
 else
     echo "Creating new Lambda function..."
     # Create Lambda function
@@ -53,7 +55,6 @@ else
 
 fi
 
-awslocal s3 cp lambda_function.zip s3://mybucket/lambda_function.zip
 
 awslocal s3api put-bucket-notification-configuration \
 --bucket mybucket \
